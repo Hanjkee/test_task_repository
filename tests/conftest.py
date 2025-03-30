@@ -1,13 +1,5 @@
 import pytest
-import logging
 from tests.helpers.api_client import ApiClient
-
-@pytest.fixture(scope="session", autouse=True)
-def setup_logging():
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-    )
 
 @pytest.fixture(scope="module")
 def base_url():
@@ -17,6 +9,14 @@ def base_url():
 def api_client(base_url):
     return ApiClient(base_url)
 
-@pytest.fixture(params=[1, 2, 3])
+@pytest.fixture(params=[1, 2, 3])  # Добавьте эту фикстуру
 def valid_post_id(request):
     return request.param
+
+@pytest.fixture
+def valid_comment_data():
+    return {
+        "name": "Test User",
+        "email": "test@example.com",
+        "body": "Test content"
+    }

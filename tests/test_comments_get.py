@@ -1,5 +1,4 @@
 import pytest
-from tests.helpers.api_client import ApiClient
 
 def test_get_comments_for_existing_post(api_client, valid_post_id):
     response = api_client.get_comments(valid_post_id)
